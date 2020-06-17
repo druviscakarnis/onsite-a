@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.URLUtil;
@@ -24,10 +25,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 public class MainActivity extends AppCompatActivity {
     private WebView webView;
     SwipeRefreshLayout refreshLayout;
-    private int count = 0;
 
-    long firstPress;
-    float now;
+    private int count = 0;
+    private long startMillis = 0;
 
     static void refreshPage(WebView webView,String url){
         webView.loadUrl(url);
@@ -68,10 +68,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View view) {
-                count++;
+                System.out.println("Pressed!");
+                long time = System.currentTimeMillis();
+
+                if(startMillis==0 || (time-startMillis>5000)){
+                    startMillis=time;
+                    count=1;
+                }else {
+                    count++;
+                }
                 if(count==10) {
                     webView.loadUrl("https://staging.onsite.lv/lv/admin/reports/time/r1-time-report");
-                    count=0;
                 }
 
             }
