@@ -2,6 +2,7 @@ package com.onsite;
 
 import android.Manifest;
 import android.app.DownloadManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
     static void refreshPage(WebView webView,String url){
         webView.loadUrl(url);
+    }
+    void newActivity(){
+        Intent i = new Intent(this, TextInput_activity.class);
+        startActivity(i);
     }
     @Override
     public void onDestroy()
@@ -78,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
                     count++;
                 }
                 if(count==10) {
-                    webView.loadUrl("https://staging.onsite.lv/lv/admin/reports/time/r1-time-report");
+                    newActivity();
+                    //webView.loadUrl("https://staging.onsite.lv/lv/admin/reports/time/r1-time-report");
                 }
 
             }
