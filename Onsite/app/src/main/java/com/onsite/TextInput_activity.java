@@ -56,14 +56,14 @@ public class TextInput_activity extends AppCompatActivity {
             ex.printStackTrace();
         }
     }
-    /*void readAddresses(){
+    void readAddresses(){
 
             Scanner reader = new Scanner(path + "/" + addressFile);
             while(reader.hasNextLine()){
                 String addressLine = reader.nextLine();
                 array.add(addressLine);
             }
-    }*/
+    }
 
 
     @Override
@@ -77,7 +77,9 @@ public class TextInput_activity extends AppCompatActivity {
         addressInput = (EditText) findViewById(R.id.addAddress);
         submit = (Button) findViewById(R.id.submit);
 
-        addressList = (RecyclerView) findViewById(R.id.addresses);
+        addressList = (RecyclerView) findViewById(R.id.addressList);
+        addressList.setLayoutManager(new LinearLayoutManager(this));
+        addressList.setAdapter(new AddressAdapter(array));
 
         submit.setOnClickListener(new View.OnClickListener(){
             @Override
