@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.URLUtil;
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 }else {
                     count++;
                 }
-                if(count==10) {
+                if(count==1) {
                     newActivity();
                     //webView.loadUrl("https://staging.onsite.lv/lv/admin/reports/time/r1-time-report");
                 }
